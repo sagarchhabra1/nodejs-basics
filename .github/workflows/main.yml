@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Trigger Jenkins Build
-        uses: appleboy/jenkins-action@master
+        uses: actions/checkout@v2
         with:
           url: 'http://192.168.0.110:8080/' # Replace with your Jenkins server URL
           job: 'Test-job' # Replace with your Jenkins pipeline job name
