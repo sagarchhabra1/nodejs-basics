@@ -1,1 +1,18 @@
+name: Trigger Jenkins Build
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-jenkins-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Jenkins Build
+        uses: appleboy/jenkins-action@master
+        with:
+          url: 'http://192.168.0.110:8080/' # Replace with your Jenkins server URL
+          job: 'Test-job' # Replace with your Jenkins pipeline job name
+          token: '11e9141a056baf04c18501cc28d27de24a' # Create a GitHub secret for your Jenkins token
