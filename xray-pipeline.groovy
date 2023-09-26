@@ -3,11 +3,11 @@ pipeline {
 
     stages {
     
-        stage('Test') {
-            steps {
-                // Replace this with your test commands
-                sh 'echo "Testing..."'
-            }
+        stage('Install node and npm versions') {
+             steps {
+                    sh "node -v"
+                    sh 'npm install -g newman'   
+             }
         }
 
 
