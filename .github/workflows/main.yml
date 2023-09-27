@@ -1,1 +1,18 @@
+name: Trigger Jenkins Job
 
+on:
+  push:
+    branches:
+      - main  # You can specify the branch you want to trigger the job on
+
+jobs:
+  trigger-jenkins-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Jenkins Job
+        run: |
+          curl -X POST -u sagar:1197d1e587f8cc493564a38f4481bba22e \
+          "http://192.168.0.110:8080/job/test-pipeline/build" \
+          --data-urlencode json='{"parameter": [{"name":"param_name", "value":"param_value"}]}' \
+          --fail
