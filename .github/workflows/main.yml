@@ -1,13 +1,23 @@
-name: CI
+name: Trigger Jenkins Job
 
-on: push
+on:
+  push:
+    branches:
+      - main # Adjust this to your desired branch
 
 jobs:
-
-  test:
+  trigger-jenkins-job:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/set-node@v1
-    - run: npm install
-    - run: npm test
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Trigger Jenkins Job
+        env:
+          JENKINS_USERNAME: "sagar"
+          JENKINS_API_TOKEN: "1197d1e587f8cc493564a38f4481bba22e" # or JENKINS_PASSWORD if using password authentication
+        run: |
+          curl -X POST -u "$JENKINS_USERNAME:$JENKINS_API_TOKEN" \
+          "http://192.168.0.110:8080/job/test-pipeline/build"
+
