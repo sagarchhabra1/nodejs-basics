@@ -12,4 +12,4 @@ const puppeteer = require('puppeteer');
   await browser.close();
 })();
 
-#this is first code is workin fine.
+#this is first code is working fine.
