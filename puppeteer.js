@@ -12,4 +12,4 @@ async function run() {
   await new Promise(resolve => setTimeout(resolve, 5000));
   await browser.close();
 }
-#this is the sample code cvofinenghn ..
+#this is the szxxample code cvofinenghn ..
