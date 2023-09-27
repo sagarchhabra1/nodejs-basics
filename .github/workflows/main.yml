@@ -17,6 +17,6 @@ jobs:
         run: |
           curl -X POST \
             -u 'sagar':'806aec7e04f04d228e2df0555d14f1f9' \
-            "http://192.168.0.110:8080/job/test-pipeline/build" \
+            "https://05b6-54-171-143-46.ngrok-free.app/job/test-pipeline/build" \
             -d token='xlzb85dc7kqo3lne'  # Update this with your trigger token
 
