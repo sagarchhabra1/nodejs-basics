@@ -1,7 +1,7 @@
 // This is a comment
 
 // Echoing a message to the console
-println "Hello, World!"
+println "Hello, Worldkm;njk;!"
 
 // Defining variables
 def firstName = "John"
