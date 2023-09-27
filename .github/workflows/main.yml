@@ -3,21 +3,20 @@ name: Trigger Jenkins Job
 on:
   push:
     branches:
-      - main # Adjust this to your desired branch
+      - main  # Replace with your desired branch name
 
 jobs:
-  trigger-jenkins-job:
+  trigger-jenkins:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v2
 
       - name: Trigger Jenkins Job
-        env:
-          JENKINS_USERNAME: "sagar"
-          JENKINS_API_TOKEN: "1197d1e587f8cc493564a38f4481bba22e" # or JENKINS_PASSWORD if using password authentication
         run: |
-          curl -X POST -u "$JENKINS_USERNAME:$JENKINS_API_TOKEN" \
-          "http://192.168.0.110:8080/job/test-pipeline/build"
+          curl -X POST \
+            -u 'sagar':'806aec7e04f04d228e2df0555d14f1f9' \
+            "http://192.168.0.110:8080/job/test-pipeline/build" \
+            -d token='xlzb85dc7kqo3lne'  # Update this with your trigger token
 
