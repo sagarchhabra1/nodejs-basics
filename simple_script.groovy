@@ -3,9 +3,6 @@
 // Echoing a message to the console
 println "Hello, World!"
 
-// You can also use single or double quotes
-echo 'This is a single-quoted message'
-
 // Defining variables
 def firstName = "John"
 def lastName = "Doe"
