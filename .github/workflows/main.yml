@@ -20,5 +20,4 @@ jobs:
           JENKINS_API_TOKEN: '111ea0484fe649f3fbfad26d2763d30060'
         run: |
           response=$(curl -X POST "$JENKINS_URL/job/test-pipeline/build" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN)
-          response=$(curl -X POST "$JENKINS_URL/job/test-pipeline/build")
           echo "Response from Jenkins: $response"
