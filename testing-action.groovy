@@ -8,7 +8,7 @@ pipeline {
     
         stage('Checkout'){
             steps{
-            checkout([$class: 'GitSCM', branches: [[name: '*/test_gitaction']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9e673d23-974c-460c-ba67-1188333cf4b4', url: 'https://github.com/AccessibleAI/jenkins_pipelines_qa.git']]])
+            checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '115f51a9517edc2a1bf5c6602aa7b0b451', url: 'https://github.com/sagarchhabra1/nodejs-basics.git']]])
                       
             }
         }
