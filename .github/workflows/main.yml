@@ -3,20 +3,20 @@ name: Trigger Jenkins Job
 on:
   push:
     branches:
-      - main  # Replace with your desired branch name
+      - main  # Change this to your branch name
 
 jobs:
-  trigger-jenkins:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
+      - name: Checkout Code
         uses: actions/checkout@v2
 
       - name: Trigger Jenkins Job
+        env:
+          JENKINS_URL: 'https://05b6-54-171-143-46.ngrok-free.app'
+          JENKINS_USERNAME: 'sagar'
+          JENKINS_API_TOKEN: '111ea0484fe649f3fbfad26d2763d30060'
         run: |
-          curl -X POST \
-            -u 'sagar':'806aec7e04f04d228e2df0555d14f1f9' \
-            "https://05b6-54-171-143-46.ngrok-free.app/job/test-pipeline/build" \
-            -d token='xlzb85dc7kqo3lne'  # Update this with your trigger token
-
+          curl -X POST "$JENKINS_URL/job/Your-Jenkins-Job/build" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN
