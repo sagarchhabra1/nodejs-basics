@@ -3,4 +3,4 @@ var callback = () => {
 }
 
 setTimeout(callback, 2000);
-#this code is running .
+#this code is running correctly.
