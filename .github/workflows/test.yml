@@ -1,7 +1,11 @@
 name: Trigger Jenkins Job
 
 on:
-  pull_request:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+  push:
     branches:
       - call-back
 
