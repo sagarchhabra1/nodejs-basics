@@ -2,9 +2,8 @@ name: Trigger Jenkins Job
 
 on:
   pull_request:
-    branches:
-      - call-back
-    types: [opened]
+    types:
+      - opened
 
 jobs:
   build:
