@@ -62,6 +62,7 @@ pipeline{
                 }
             }
         }
+}
 
 //         stage('Fetch Git Project') {
 //             steps {
@@ -618,4 +619,4 @@ pipeline{
     //     }
     //   }
     // }
-}
+// }
