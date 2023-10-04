@@ -16,7 +16,7 @@ jobs:
 
       - name: Trigger Jenkins Job
         env:
-          JENKINS_URL: 'https://fdaa-103-240-232-136.ngrok-free.app'
+          JENKINS_URL: 'https://5b7f-103-240-232-136.ngrok-free.app'
           JENKINS_USERNAME: 'sagar'
           JENKINS_API_TOKEN: '111ea0484fe649f3fbfad26d2763d30060'
         run: |
