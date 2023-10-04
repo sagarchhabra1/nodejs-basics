@@ -4,9 +4,7 @@ on:
   pull_request:
     types:
       - opened
-    branches:
-      - call-back
-
+      
 jobs:
   build:
     runs-on: ubuntu-latest
