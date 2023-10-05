@@ -7,5 +7,19 @@ pipeline {
                 cleanWs()
             }
         }
+
+        stage('Setup parameters'){
+            steps{
+                script{
+                    properties(
+                        [[$class: 'JiraProjectProperty'], 
+                        [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false], 
+                        parameters([
+                            string(defaultValue: '3414', description: '', name: 'RUN_ID', trim: false)
+                        )]
+                    )
+                }
+            }
+        }
     }
 }
