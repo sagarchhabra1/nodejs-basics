@@ -14,8 +14,7 @@ pipeline {
                     properties(
                         parameters([
                             string(defaultValue: '3414', description: '', name: 'RUN_ID', trim: false)
-                        ]),
-                        [$class: 'JobLocalConfiguration', changeReasonComment: '']]
+                        ])
                     )
                 }
             }
