@@ -15,9 +15,14 @@ jobs:
 
       - name: Trigger Jenkins Job
         env:
-          JENKINS_URL: 'https://37b1-54-171-143-46.ngrok-free.app'
-          JENKINS_USERNAME: 'sagar'
-          JENKINS_API_TOKEN: '111ea0484fe649f3fbfad26d2763d30060'
+          JENKINS_URL: 'https://devops.jenkins.cnvrg.io'
+          JENKINS_USERNAME: 'Pandey Rishav'
+          JENKINS_API_TOKEN: '11a5d339a26e8787b2572e659220f525de'
+          RUN_ID: '2085'
+          DEFAULT_URL: 'metacloud.qa.staging-cloud.cnvrg.io'
+          PARALLEL_SPLIT_TEST_PROCESSES: '30'
+          AUT_BRANCH: 'master'
         run: |
-          response=$(curl -X POST "$JENKINS_URL/job/test-pipeline/build" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN)
+          JENKINS_JOB_URL = "$JENKINS_URL/job/QA-Web-Pipeline/buildWithParameters?param1=$RUN_ID&param2=$DEFAULT_URL&param3=$PARALLEL_SPLIT_TEST_PROCESSES&param4=$AUT_BRANCH"
+          response=$(curl -X POST "$JENKINS_JOB_URL" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN)          
           echo "Response from Jenkins: $response"
