@@ -1,23 +1,23 @@
-name: Trigger Jenkins Job
+name: Ruby Automation in Docker
 
 on:
   push:
     branches:
-      - main  # Change this to your branch name
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Trigger Jenkins Job
-        env:
-          JENKINS_URL: 'https://4a69-54-171-143-46.ngrok-free.app'
-          JENKINS_USERNAME: 'sagar'
-          JENKINS_API_TOKEN: '111ea0484fe649f3fbfad26d2763d30060'
-        run: |
-          response=$(curl -X POST "$JENKINS_URL/job/test-pipeline/build" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN)
-          echo "Response from Jenkins: $response"
+    - name: Set up Docker
+      uses: actions/setup-docker@v2
+
+    - name: Build Docker image
+      run: docker build -t my-ruby-app .
+
+    - name: Run Ruby automation in Docker
+      run: docker run my-ruby-app ruby /path/to/your/ruby_script.rb
