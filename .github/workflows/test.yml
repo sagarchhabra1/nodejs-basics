@@ -1,0 +1,28 @@
+name: Trigger Jenkins Job
+
+on:
+  pull_request:
+    types:
+      - opened
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Trigger Jenkins Job
+        env:
+          JENKINS_URL: 'https://devops.jenkins.cnvrg.io'
+          JENKINS_USERNAME: 'Pandey Rishav'
+          JENKINS_API_TOKEN: '11a5d339a26e8787b2572e659220f525de'
+          RUN_ID: '2085'
+          DEFAULT_URL: 'https://metacloud.qa.staging-cloud.cnvrg.io'
+          PARALLEL_SPLIT_TEST_PROCESSES: '30'
+          AUT_BRANCH: 'master'
+        run: |
+          JENKINS_JOB_URL="$JENKINS_URL/job/QA-Web-Pipeline/buildWithParameters?RUN_ID=$RUN_ID&DEFAULT_URL=$DEFAULT_URL&PARALLEL_SPLIT_TEST_PROCESSES=$PARALLEL_SPLIT_TEST_PROCESSES&AUT_BRANCH=$AUT_BRANCH"
+          response=$(curl -X POST "$JENKINS_JOB_URL" --user $JENKINS_USERNAME:$JENKINS_API_TOKEN)          
+          echo "Response from Jenkins: $response"
