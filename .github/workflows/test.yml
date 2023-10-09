@@ -19,7 +19,7 @@ jobs:
           JENKINS_USERNAME: 'Pandey Rishav'
           JENKINS_API_TOKEN: '11a5d339a26e8787b2572e659220f525de'
           RUN_ID: '2085'
-          DEFAULT_URL: 'metacloud.qa.staging-cloud.cnvrg.io'
+          DEFAULT_URL: 'https://metacloud.qa.staging-cloud.cnvrg.io'
           PARALLEL_SPLIT_TEST_PROCESSES: '30'
           AUT_BRANCH: 'master'
         run: |
