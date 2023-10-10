@@ -1,26 +1,20 @@
-name: Ruby Automation in Docker
+name: Ruby Docker Automation
 
 on:
   push:
     branches:
-      - main
+      - main # Change this to your main branch name
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-        sudo docker --version
+      - name: Build Docker image
+        run: docker build -t my-ruby-app .
 
-    - name: Build Docker image
-      run: docker build -t my-ruby-app .
-
-    - name: Run Ruby automation in Docker
-      run: docker run my-ruby-app ruby /path/to/your/ruby_script.rb
+      - name: Run Ruby in Docker
+        run: docker run my-ruby-app ruby your_ruby_script.rb
