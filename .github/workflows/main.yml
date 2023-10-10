@@ -3,7 +3,7 @@ name: Ruby Docker Automation
 on:
   push:
     branches:
-      - main # Change this to your main branch name
+      - main
 
 jobs:
   build:
@@ -18,3 +18,6 @@ jobs:
 
       - name: Run Ruby in Docker
         run: docker run my-ruby-app ruby your_ruby_script.rb
+
+      - name: Delete Docker image
+        run: docker rmi my-ruby-app
