@@ -18,7 +18,7 @@ jobs:
           docker build \
             --build-arg RUN_ID='2085' \
             --build-arg RUN_STATUS='Passed,Retest,Failed,Warning,Untested,Blocked' \
-            --build-arg RERUN='true'
+            --build-arg RERUN='true' \
             --build-arg REMOTE_URL='http://testgrid.cnvrg.io/wd/hub' \
             --build-arg DEFAULT_URL='https://metacloud.qa.staging-cloud.cnvrg.io' \
             --build-arg NEW_TESTRUN_TITLE="${NEW_TESTRUN_TITLE}" \
