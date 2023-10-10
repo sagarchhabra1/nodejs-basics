@@ -5,3 +5,5 @@ COPY Gemfile* /cnvrg_aut/
 WORKDIR /cnvrg_aut
 RUN gem install bundler --pre
 RUN bundle install
+COPY . .
+CMD ["ruby", "your_ruby_script.rb"]
