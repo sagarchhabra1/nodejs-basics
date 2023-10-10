@@ -1,7 +1,7 @@
-name: Ruby Docker Automation
+name: Docker Build and Run
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
@@ -13,8 +13,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build Docker image
-        run: docker build -t my-ruby-app .
+      - name: Build Docker Image
+        run: |
+          docker build \
+            --build-arg RUN_ID='2085' \
+            --build-arg RUN_STATUS='Passed,Retest,Failed,Warning,Untested,Blocked' \
+            --build-arg RERUN='true'
+            --build-arg REMOTE_URL='http://testgrid.cnvrg.io/wd/hub' \
+            --build-arg DEFAULT_URL='https://metacloud.qa.staging-cloud.cnvrg.io' \
+            --build-arg NEW_TESTRUN_TITLE="${NEW_TESTRUN_TITLE}" \
+            --build-arg PARALLEL_SPLIT_TEST_PROCESSES="30" \
+            -t my-docker-image .
 
-      - name: Run Ruby in Docker
-        run: docker run my-ruby-app ruby your_ruby_script.rb
+      - name: List Docker Containers
+        run: docker ps
+
+      - name: Create Docker Container
+        id: create_container
+        run: |
+          cont_id=$(docker create my-docker-image)
+          echo $cont_id
+          ls
+          sleep 10
+          echo "::set-output name=container_id::$cont_id"
+
+      - name: Run Docker Container
+        run: |
+          docker run \
+            -e PARALLEL_SPLIT_TEST_PROCESSES=1 \
+            -e REMOTE_URL=${REMOTE_URL} \
+            -e PREEMPTION=true \
+            -e RERUN=false \
+            -e RUN_ID=${RUN_ID} \
+            -e RETEST=false \
+            $(docker inspect --format='{{.Id}}' ${{ steps.create_container.outputs.container_id }})
